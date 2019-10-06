@@ -6,12 +6,13 @@
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="AppTesting.Views.MainWindow"
         Icon="/Assets/avalonia-logo.ico"
-        Title="AppTesting">
+        Title="AppTesting"
+        >
 
-    <Design.DataContext>
+  <!--DataContext>
         <vm:MainWindowViewModel/>
-    </Design.DataContext>
+    </DataContext-->
 
-    <TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-
+  <!--TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center"/-->
+    <ContentControl Content="{Binding ViewContent}"/>
 </Window>

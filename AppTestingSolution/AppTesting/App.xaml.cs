@@ -9,5 +9,7 @@ namespace AppTesting
         {
             AvaloniaXamlLoader.Load(this);
         }
+
+        public static bool IsAdmin { get; set; }
     }
 }

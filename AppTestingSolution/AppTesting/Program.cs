@@ -13,7 +13,6 @@ namespace AppTesting
         // yet and stuff might break.
         public static void Main(string[] args)
         {
-            System.Diagnostics.Debug.WriteLine(args);
             BuildAvaloniaApp().Start(AppMain, args);
         }
 
@@ -28,10 +27,17 @@ namespace AppTesting
         // container, etc.
         private static void AppMain(Application app, string[] args)
         {
+            foreach (var item in args)
+            {
+                if (item == "/admin")
+                    App.IsAdmin = true;
+            }
+
             var window = new MainWindow
             {
                 DataContext = new MainWindowViewModel(),
             };
+
 
             app.Run(window);
         }
