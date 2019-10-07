@@ -13,15 +13,28 @@
       <RowDefinition Height="Auto"/>
       <RowDefinition Height="*"/>
     </Grid.RowDefinitions>
-   
-      <StackPanel Orientation="Horizontal">
-        <Button Margin="5 2 2 2" Content="+" Width="25" Height="25"/>
-        <Button Margin="2 2 2 2" Content="-" Width="25" Height="25"/>
-        <Button Margin="2 2 2 2" Content="v" Width="25" Height="25"/>
+    <Border Margin="1" BorderThickness="1" BorderBrush="Gray">
+      <StackPanel Orientation="Horizontal" >
+        <Button Margin="2 2 1 2" Width="30" Height="30" Padding="0" Command="{Binding OnClickPlusCommand}">
+          <Button.Content>
+            <Image Source="resm:AppTesting.Assets.png.plus.png"/>
+          </Button.Content>
+        </Button>
+        <Button Margin="1 2 1 2" Width="30" Height="30" Padding="0" Command="{Binding OnClickEditCommand}">
+          <Button.Content>
+            <Image Source="resm:AppTesting.Assets.png.edit.png"/>
+          </Button.Content>
+        </Button>
+        <Button Margin="1 2 1 2" Width="30" Height="30" Padding="0" Command="{Binding OnClickMinusCommand}">
+          <Button.Content>
+            <Image Source="resm:AppTesting.Assets.png.minus.png"/>
+          </Button.Content>
+        </Button>
       </StackPanel>
-      <TreeView Margin="0" Grid.Row="1" >
-        
-      </TreeView>
-  
+    </Border>
+    <TreeView Margin="1 0 1 1" Grid.Row="1" >
+
+    </TreeView>
+
   </Grid>
 </UserControl>

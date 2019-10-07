@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFrameworks>netcoreapp2.1;net461</TargetFrameworks>
@@ -16,14 +16,21 @@
     <AvaloniaResource Remove="Views\EditorTests.xaml" />
   </ItemGroup>
   <ItemGroup>
+    <None Remove="Assets\png\edit.png" />
+    <None Remove="Assets\png\minus.png" />
+    <None Remove="Assets\png\plus.png" />
     <None Remove="Views\EditorTests.xaml" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Avalonia" Version="0.8.0" />
     <PackageReference Include="Avalonia.Desktop" Version="0.8.0" />
     <PackageReference Include="Avalonia.ReactiveUI" Version="0.8.0" />
+    <PackageReference Include="MessageBox.Avalonia" Version="0.8.3" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Assets\png\edit.png" />
+    <EmbeddedResource Include="Assets\png\minus.png" />
+    <EmbeddedResource Include="Assets\png\plus.png" />
     <EmbeddedResource Include="Views\EditorTests.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>

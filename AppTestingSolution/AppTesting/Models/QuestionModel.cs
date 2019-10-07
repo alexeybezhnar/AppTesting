@@ -4,7 +4,7 @@ using System.Text;
 
 namespace AppTesting.Models
 {
-    public class QuestionModel
+    public class QuestionModel : BaseModel
     {
         public string Question { get; set; }
 
