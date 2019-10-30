@@ -3,7 +3,29 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="AppTesting.Views.EditorTests">
+             x:Class="AppTesting.Views.EditorTests"
+             xmlns:local="clr-namespace:AppTesting.Models"
+  >
+
+  <UserControl.Styles>
+    <Style Selector="Button.panelIns">
+      <Setter Property="Width" Value="36"/>
+      <Setter Property="Height" Value="36"/>
+      <Setter Property="Background" Value="Transparent"/>
+      <Setter Property="Padding" Value="0"/>
+    </Style>
+    <Style Selector="TextBlock.nameHeader">
+      <Setter Property="FontSize" Value="16"/>
+      <Setter Property="FontWeight" Value="Bold"/>
+      <Setter Property="Margin" Value="5"/>
+      <Setter Property="VerticalAlignment" Value="Center"/>
+      <Setter Property="Height" Value="25"/>
+    </Style>
+    <Style Selector="TextBox.edit, CheckBox.edit">
+      <Setter Property="FontSize" Value="16"/>
+      <Setter Property="VerticalAlignment" Value="Center"/>
+    </Style>
+  </UserControl.Styles>
   <Grid>
     <Grid.ColumnDefinitions>
       <ColumnDefinition Width="3*" MinWidth="300"/>
@@ -13,28 +35,99 @@
       <RowDefinition Height="Auto"/>
       <RowDefinition Height="*"/>
     </Grid.RowDefinitions>
-    <Border Margin="1" BorderThickness="1" BorderBrush="Gray">
+    <Border Margin="1" BorderThickness="1" BorderBrush="Gray" Grid.ColumnSpan="2">
       <StackPanel Orientation="Horizontal" >
-        <Button Margin="2 2 1 2" Width="30" Height="30" Padding="0" Command="{Binding OnClickPlusCommand}">
+        <Button Margin="2 2 1 2" Classes="panelIns" Command="{Binding OnClickSaveCommand}">
+          <Button.Content>
+            <Image Source="resm:AppTesting.Assets.png.save.png"/>
+          </Button.Content>
+        </Button>
+        <Button Margin="5 2 1 2" Classes="panelIns" Command="{Binding OnClickPlusCommand}">
           <Button.Content>
             <Image Source="resm:AppTesting.Assets.png.plus.png"/>
           </Button.Content>
         </Button>
-        <Button Margin="1 2 1 2" Width="30" Height="30" Padding="0" Command="{Binding OnClickEditCommand}">
+        <!--<Button Margin="1 2 1 2" Width="30" Height="30" Padding="0" Command="{Binding OnClickEditCommand}" Background="Transparent">
           <Button.Content>
             <Image Source="resm:AppTesting.Assets.png.edit.png"/>
           </Button.Content>
-        </Button>
-        <Button Margin="1 2 1 2" Width="30" Height="30" Padding="0" Command="{Binding OnClickMinusCommand}">
+        </Button>-->
+        <Button Margin="1 2 1 2" Classes="panelIns" Command="{Binding OnClickMinusCommand}">
           <Button.Content>
             <Image Source="resm:AppTesting.Assets.png.minus.png"/>
           </Button.Content>
         </Button>
       </StackPanel>
     </Border>
-    <TreeView Margin="1 0 1 1" Grid.Row="1" >
-
+    
+    <TreeView x:Name="treeViewTests" Margin="1 0 1 1" Grid.Row="1" Items="{Binding ListTests}" SelectedItem="{Binding CurrentTest, Mode=TwoWay}"  >
+      <TreeView.ItemTemplate>
+        <TreeDataTemplate ItemsSource="{Binding Children}">
+          <StackPanel Orientation="Horizontal">
+            <Image Source="{Binding ImagePath}"/>
+            <TextBlock Text="{Binding Name, Mode=TwoWay}" VerticalAlignment="Center" FontSize="16" Margin="5 0"/>
+          </StackPanel>
+        </TreeDataTemplate>
+       
+      </TreeView.ItemTemplate>
     </TreeView>
 
+    <ContentControl Grid.Row="1" Grid.Column="1" Margin="1 0 1 1" Content="{Binding CurrentTest}" BorderThickness="1" BorderBrush="Gray">
+      <ContentControl.DataTemplates>
+
+        <DataTemplate DataType="{x:Type local:TestRootModel}">
+          <Grid ColumnDefinitions="Auto,*" RowDefinitions="Auto,*" Margin="5">
+            <TextBlock Classes="nameHeader" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding Name, Mode=TwoWay}"/>
+          
+            <ListBox Grid.Row="1" Grid.ColumnSpan="2" Items="{Binding Children, Mode=TwoWay}">
+              <ListBox.ItemTemplate>
+                <DataTemplate>
+                  <Border Background="Red" CornerRadius="4" Padding="4">
+                    <TextBlock Text="{Binding Name}"/>
+                  </Border>
+                </DataTemplate>
+              </ListBox.ItemTemplate>
+            </ListBox>
+          </Grid>
+        </DataTemplate>
+        
+          <DataTemplate DataType="{x:Type local:TestModel}">
+            <Grid ColumnDefinitions="Auto,*" RowDefinitions="Auto, Auto,*" Margin="5">
+              <TextBlock Classes="nameHeader" Grid.Row="0" Grid.Column="0" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Right">Название теста:</TextBlock>
+              <TextBox Grid.Row="0" Grid.Column="1"  FontSize="16" Text="{Binding Name, Mode=TwoWay}"/>
+              <TextBlock Classes="nameHeader" Grid.Row="1" Grid.Column="0"  FontSize="16" HorizontalAlignment="Right">Список вопросов:</TextBlock>
+              <ListBox Grid.Row="2" Grid.ColumnSpan="2" Items="{Binding Children, Mode=TwoWay}">
+                <ListBox.ItemTemplate>
+                  <DataTemplate>
+                    <Border Background="Red" CornerRadius="4" Padding="4">
+                      <TextBlock Text="{Binding Name}"/>
+                    </Border>
+                  </DataTemplate>
+                </ListBox.ItemTemplate>
+              </ListBox>
+            </Grid>
+          </DataTemplate>
+
+          <DataTemplate DataType="{x:Type local:QuestionModel}">
+            <Grid ColumnDefinitions="Auto,*" RowDefinitions="Auto, Auto,*" Margin="5">
+              <TextBlock Classes="nameHeader" Grid.Row="0" Grid.Column="0" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Right">Вопрос:</TextBlock>
+              <TextBox Grid.Row="0" Grid.Column="1"  FontSize="16" Text="{Binding Name, Mode=TwoWay}"/>
+              <TextBlock Classes="nameHeader" Grid.Row="1" Grid.Column="0"  FontSize="16" HorizontalAlignment="Right">Список ответов:</TextBlock>
+              <ListBox Grid.Row="2" Grid.ColumnSpan="2" Items="{Binding Answers, Mode=TwoWay}">
+                <ListBox.ItemTemplate>
+                  <DataTemplate>
+                    <Grid ColumnDefinitions="*,Auto,Auto">
+                      <TextBox Classes="edit" Text="{Binding Name, Mode=TwoWay}"/>
+                      <CheckBox Classes="edit" Grid.Column="2" Content="Верно" IsChecked="{Binding Right, Mode=TwoWay}" Margin="5 0 0 0"/>
+                    </Grid>
+                  </DataTemplate>
+                </ListBox.ItemTemplate>
+              </ListBox>
+            </Grid>
+          </DataTemplate>
+      </ContentControl.DataTemplates>
+      
+    </ContentControl>
+    
   </Grid>
 </UserControl>

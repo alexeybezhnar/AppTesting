@@ -1,4 +1,5 @@
-﻿using ReactiveUI;
+﻿using AppTesting.IO;
+using ReactiveUI;
 
 namespace AppTesting.ViewModels
 {
@@ -8,25 +9,45 @@ namespace AppTesting.ViewModels
         {
             OnClickPlusCommand = ReactiveCommand.Create(ClickPlus);
             OnClickMinusCommand = ReactiveCommand.Create(ClickMinus);
-            OnClickEditCommand = ReactiveCommand.Create(ClickEdit);
+            OnClickSaveCommand = ReactiveCommand.Create(ClickSave);
         }
 
         public ReactiveCommand OnClickPlusCommand { get; }
         private void ClickPlus()
         {
-            var mbx = new MessageBox.Avalonia.MessageBoxWindow("Click", "OnClickPlusCommand");
-            mbx.Show();
+
+            if (CurrentTest == null)
+                return;
+            Models.BaseNode model = null;
+
+            if (CurrentTest is Models.TestRootModel)
+                model = new Models.TestModel() { Name = "Новый тест" };
+            else if (CurrentTest is Models.TestModel)
+                model = new Models.QuestionModel() { Name = "Новый вопрос" };
+            else if (CurrentTest is Models.QuestionModel)
+            {
+                ((Models.QuestionModel)CurrentTest).Answers.Add(new Models.AnswerModel() { Name = "Новый ответ" });
+            }
+
+            if (model == null)
+                return;
+                
+            CurrentTest.Children.Add(model);
+            CurrentTest = model;
         }
         public ReactiveCommand OnClickMinusCommand { get; }
         private void ClickMinus()
         {
-            var mbx = new MessageBox.Avalonia.MessageBoxWindow("Click", "OnClickMinusCommand");
-            mbx.Show();
+            Models.BaseNode model = CurrentTest;
+            if (model != null)
+                this.ListTests.Remove(model);
         }
-        public ReactiveCommand OnClickEditCommand { get; }
-        private void ClickEdit()
+
+        public ReactiveCommand OnClickSaveCommand { get; }
+        private void ClickSave()
         {
-            var mbx = new MessageBox.Avalonia.MessageBoxWindow("Click", "OnClickEditCommand");
+            Writer.Write(ListTests);
+            var mbx = new MessageBox.Avalonia.MessageBoxWindow("Сохранение", "Данные успешно сохранены.");
             mbx.Show();
         }
     }

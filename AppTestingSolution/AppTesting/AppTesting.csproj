@@ -19,6 +19,10 @@
     <None Remove="Assets\png\edit.png" />
     <None Remove="Assets\png\minus.png" />
     <None Remove="Assets\png\plus.png" />
+    <None Remove="Assets\png\quest.png" />
+    <None Remove="Assets\png\root.png" />
+    <None Remove="Assets\png\save.png" />
+    <None Remove="Assets\png\test.png" />
     <None Remove="Views\EditorTests.xaml" />
   </ItemGroup>
   <ItemGroup>
@@ -26,11 +30,19 @@
     <PackageReference Include="Avalonia.Desktop" Version="0.8.0" />
     <PackageReference Include="Avalonia.ReactiveUI" Version="0.8.0" />
     <PackageReference Include="MessageBox.Avalonia" Version="0.8.3" />
+    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.9.6">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Assets\png\edit.png" />
     <EmbeddedResource Include="Assets\png\minus.png" />
     <EmbeddedResource Include="Assets\png\plus.png" />
+    <EmbeddedResource Include="Assets\png\quest.png" />
+    <EmbeddedResource Include="Assets\png\root.png" />
+    <EmbeddedResource Include="Assets\png\save.png" />
+    <EmbeddedResource Include="Assets\png\test.png" />
     <EmbeddedResource Include="Views\EditorTests.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
