@@ -25,6 +25,10 @@
       <Setter Property="FontSize" Value="16"/>
       <Setter Property="VerticalAlignment" Value="Center"/>
     </Style>
+    <Style Selector="ListBox.edit">
+      <Setter Property="BorderThickness" Value="0"/>
+      <Setter Property="FontSize" Value="16"/>
+    </Style>
   </UserControl.Styles>
   <Grid>
     <Grid.ColumnDefinitions>
@@ -79,12 +83,14 @@
           <Grid ColumnDefinitions="Auto,*" RowDefinitions="Auto,*" Margin="5">
             <TextBlock Classes="nameHeader" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding Name, Mode=TwoWay}"/>
           
-            <ListBox Grid.Row="1" Grid.ColumnSpan="2" Items="{Binding Children, Mode=TwoWay}">
+            <ListBox x:Name="lbTests" Grid.Row="1" Grid.ColumnSpan="2" Classes="edit" Items="{Binding Children, Mode=TwoWay}">
               <ListBox.ItemTemplate>
                 <DataTemplate>
-                  <Border Background="Red" CornerRadius="4" Padding="4">
-                    <TextBlock Text="{Binding Name}"/>
-                  </Border>
+                  <Grid ColumnDefinitions="*,Auto,50" Margin="5">
+                    <TextBlock Classes="edit" Text="{Binding Name, Mode=OneWay}"/>
+                    <TextBlock Grid.Column="1" Classes="edit" Text="Вопросов:"/>
+                    <TextBlock Grid.Column="2" Classes="edit" Text="{Binding ChildrenCount, Mode=OneWay}" Margin="5 0"/>
+                  </Grid>
                 </DataTemplate>
               </ListBox.ItemTemplate>
             </ListBox>
@@ -96,12 +102,16 @@
               <TextBlock Classes="nameHeader" Grid.Row="0" Grid.Column="0" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Right">Название теста:</TextBlock>
               <TextBox Grid.Row="0" Grid.Column="1"  FontSize="16" Text="{Binding Name, Mode=TwoWay}"/>
               <TextBlock Classes="nameHeader" Grid.Row="1" Grid.Column="0"  FontSize="16" HorizontalAlignment="Right">Список вопросов:</TextBlock>
-              <ListBox Grid.Row="2" Grid.ColumnSpan="2" Items="{Binding Children, Mode=TwoWay}">
+              <ListBox Grid.Row="2" Grid.ColumnSpan="2" Classes="edit" Items="{Binding Children, Mode=TwoWay}">
                 <ListBox.ItemTemplate>
                   <DataTemplate>
-                    <Border Background="Red" CornerRadius="4" Padding="4">
-                      <TextBlock Text="{Binding Name}"/>
-                    </Border>
+                    <Grid ColumnDefinitions="*,Auto,50, Auto, 50" Margin="5">
+                      <TextBlock Classes="edit" Text="{Binding Name, Mode=OneWay}"/>
+                      <TextBlock Grid.Column="1" Classes="edit" Text="Вариантов/Ответов:"/>
+                      <TextBlock Grid.Column="2" Classes="edit" HorizontalAlignment="Right" Text="{Binding AnswersCount, Mode=OneWay}" Margin="5 0"/>
+                      <TextBlock Grid.Column="3" Classes="edit" Text="/"/>
+                      <TextBlock Grid.Column="4" Classes="edit" Text="{Binding AnswersTryCount, Mode=OneWay}" Margin="5 0"/>
+                    </Grid>
                   </DataTemplate>
                 </ListBox.ItemTemplate>
               </ListBox>
@@ -113,7 +123,7 @@
               <TextBlock Classes="nameHeader" Grid.Row="0" Grid.Column="0" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Right">Вопрос:</TextBlock>
               <TextBox Grid.Row="0" Grid.Column="1"  FontSize="16" Text="{Binding Name, Mode=TwoWay}"/>
               <TextBlock Classes="nameHeader" Grid.Row="1" Grid.Column="0"  FontSize="16" HorizontalAlignment="Right">Список ответов:</TextBlock>
-              <ListBox Grid.Row="2" Grid.ColumnSpan="2" Items="{Binding Answers, Mode=TwoWay}">
+              <ListBox Grid.Row="2" Grid.ColumnSpan="2" Classes="edit" Items="{Binding Answers, Mode=TwoWay}">
                 <ListBox.ItemTemplate>
                   <DataTemplate>
                     <Grid ColumnDefinitions="*,Auto,Auto">

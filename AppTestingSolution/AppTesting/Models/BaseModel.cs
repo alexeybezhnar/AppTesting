@@ -1,4 +1,6 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.Xml;
 using AppTesting.IO;
 using Avalonia.Media.Imaging;
@@ -15,13 +17,25 @@ namespace AppTesting.Models
         public BaseNode()
         {
             Children = new ObservableCollection<BaseNode>();
+            Children.CollectionChanged += new NotifyCollectionChangedEventHandler(Children_CollectionChanged);
         }
+
+        private void Children_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        {
+            this.RaisePropertyChanged(nameof(ChildrenCount));
+        }
+
 
         private string _name;
         public string Name
         {
             get => _name;
             set => this.RaiseAndSetIfChanged(ref _name, value);
+        }
+
+        public int ChildrenCount
+        {
+            get => Children == null ? 0 : Children.Count;
         }
 
         public ObservableCollection<BaseNode> Children { get; }
@@ -117,6 +131,8 @@ namespace AppTesting.Models
                 }
             }
         }
+
+       
     }
 
 

@@ -1,10 +1,13 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.Xml;
 using AppTesting.IO;
 using Avalonia;
 using Avalonia.Media.Imaging;
 using Avalonia.Platform;
+using ReactiveUI;
 
 namespace AppTesting.Models
 {
@@ -19,10 +22,25 @@ namespace AppTesting.Models
 
             ImagePath = _icon;
             Answers = new ObservableCollection<AnswerModel>();
+            Answers.CollectionChanged += new NotifyCollectionChangedEventHandler(Answers_CollectionChanged);
         }
 
         public ObservableCollection<AnswerModel> Answers { get; }
 
+        private void Answers_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        {
+            this.RaisePropertyChanged(nameof(AnswersCount));
+            this.RaisePropertyChanged(nameof(AnswersTryCount));
+        }
+
+        public int AnswersCount
+        {
+            get => Answers == null ? 0 : Answers.Count;
+        }
+        public int AnswersTryCount
+        {
+            get => Answers == null ? 0 : Answers.Count(f => f.Right);
+        }
 
         protected override void WriteData(XmlWriter writer)
         {
@@ -38,7 +56,7 @@ namespace AppTesting.Models
 
         protected override void ReadElement(XmlReader reader)
         {
-            
+
             if (reader != null)
             {
                 if (reader.Name == "Answers") ReadAnswers(reader);
