@@ -8,11 +8,5 @@
         Icon="/Assets/avalonia-logo.ico"
         Title="AppTesting"
         >
-
-  <!--DataContext>
-        <vm:MainWindowViewModel/>
-    </DataContext-->
-
-  <!--TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center"/-->
     <ContentControl Content="{Binding ViewContent}"/>
 </Window>

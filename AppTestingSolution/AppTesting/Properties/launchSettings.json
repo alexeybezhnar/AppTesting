@@ -1,8 +1,7 @@
 {
   "profiles": {
     "AppTesting": {
-      "commandName": "Project",
-      "commandLineArgs": "/admin"
+      "commandName": "Project"
     }
   }
 }

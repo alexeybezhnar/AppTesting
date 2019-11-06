@@ -31,7 +31,6 @@ namespace AppTesting.ViewModels
         public ObservableCollection<BaseNode> ListTests
         {
             get => listTests;
-            set => this.RaiseAndSetIfChanged(ref listTests, value);
         }
 
         private BaseNode currentTest;

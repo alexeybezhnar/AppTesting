@@ -14,6 +14,8 @@
   </ItemGroup>
   <ItemGroup>
     <AvaloniaResource Remove="Views\EditorTests.xaml" />
+    <AvaloniaResource Remove="Views\NavigatorTests.xaml" />
+    <AvaloniaResource Remove="Views\TestItemControl.xaml" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Assets\png\edit.png" />
@@ -24,6 +26,8 @@
     <None Remove="Assets\png\save.png" />
     <None Remove="Assets\png\test.png" />
     <None Remove="Views\EditorTests.xaml" />
+    <None Remove="Views\NavigatorTests.xaml" />
+    <None Remove="Views\TestItemControl.xaml" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Avalonia" Version="0.8.0" />
@@ -44,6 +48,16 @@
     <EmbeddedResource Include="Assets\png\save.png" />
     <EmbeddedResource Include="Assets\png\test.png" />
     <EmbeddedResource Include="Views\EditorTests.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\NavigatorTests.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\TestItemControl.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
   </ItemGroup>

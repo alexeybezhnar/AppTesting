@@ -8,8 +8,6 @@ namespace AppTesting.ViewModels
 {
     public class MainWindowViewModel : ViewModelBase
     {
-        public string Greeting => "Welcome to Avalonia!";
-
         UserControl _ViewContent;
         public UserControl ViewContent
         {
@@ -19,6 +17,8 @@ namespace AppTesting.ViewModels
                 {
                     if (App.IsAdmin)
                         _ViewContent = new EditorTests();
+                    else
+                        _ViewContent = new NavigatorTests();
                 }
                 return _ViewContent;
 

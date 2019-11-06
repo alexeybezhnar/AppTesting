@@ -1,0 +1,70 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="AppTesting.Views.NavigatorTests"
+             xmlns:local="clr-namespace:AppTesting.Models">
+  <UserControl.Styles>
+    <Style Selector="Button.wrapInPanel">
+      <Setter Property="Width" Value="400"/>
+      <Setter Property="Height" Value="200"/>
+      <Setter Property="Background" Value="Transparent"/>
+      <Setter Property="Padding" Value="0"/>
+      <Setter Property="Margin" Value="10"/>
+      <Setter Property="FontSize" Value="24"/>
+      <Setter Property="VerticalContentAlignment" Value="Center"/>
+    </Style>
+    <Style Selector="Button.wrapInTest">
+      <Setter Property="Width" Value="200"/>
+      <Setter Property="Height" Value="50"/>
+      <Setter Property="Background" Value="Transparent"/>
+      <Setter Property="Padding" Value="0"/>
+      <Setter Property="Margin" Value="10"/>
+      <Setter Property="FontSize" Value="24"/>
+      <Setter Property="VerticalContentAlignment" Value="Center"/>
+    </Style>
+  </UserControl.Styles>
+
+  <ContentControl Margin="1" Content="{Binding CurrentTest}" BorderThickness="1" BorderBrush="Gray">
+    <ContentControl.DataTemplates>
+
+      <DataTemplate DataType="{x:Type local:TestRootModel}">
+        <ItemsControl Items="{Binding Children}" Margin="20">
+          <ItemsControl.ItemTemplate>
+            <DataTemplate>
+              <Button Classes="wrapInPanel" Command="{Binding $parent[UserControl].DataContext.OnClickSelectCommand}" CommandParameter="{Binding .}">
+                <Grid ColumnDefinitions="Auto,*" RowDefinitions="Auto">
+                  <Image Source="{Binding ImagePath}" Margin="5" Width="32" Height="32"/>
+                  <TextBlock Grid.Column="1" Text="{Binding Name}" Margin="5" TextWrapping="Wrap" TextAlignment="Center" />
+                </Grid>
+              </Button>
+            </DataTemplate>
+          </ItemsControl.ItemTemplate>
+          <ItemsControl.ItemsPanel>
+            <ItemsPanelTemplate>
+              <WrapPanel/>
+            </ItemsPanelTemplate>
+          </ItemsControl.ItemsPanel>
+        </ItemsControl>
+      </DataTemplate>
+
+      <DataTemplate DataType="{x:Type local:TestModel}">
+       
+        <Grid ColumnDefinitions="*" RowDefinitions="Auto, *, Auto">
+          <TextBlock Text="{Binding $parent[UserControl].DataContext.CurrentItemTest.Name, Mode=OneWay}" HorizontalAlignment="Center"/>
+
+          <Grid Grid.Row="1" RowDefinitions="Auto, Auto, Auto, *">
+            <!--<TextBlock Text="{Binding CurrentQuestion.Name}" HorizontalAlignment="Center"/>
+            <TextBlock Text="{Binding CurrentQuestion.Name}" HorizontalAlignment="Center"/>-->
+          </Grid>
+          
+          <Grid Grid.Row="2" ColumnDefinitions="Auto, *, Auto">
+            <Button Classes="wrapInTest"  Command="{Binding $parent[UserControl].DataContext.OnClickEndTestCommand}">Завершить</Button>
+            <Button Classes="wrapInTest" Grid.Column="2">Далее</Button>
+          </Grid>
+        </Grid>
+      </DataTemplate>
+    </ContentControl.DataTemplates>
+  </ContentControl>
+</UserControl>
