@@ -4,7 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="AppTesting.Views.NavigatorTests"
-             xmlns:local="clr-namespace:AppTesting.Models">
+             xmlns:local="clr-namespace:AppTesting.Models"
+             xmlns:localControls="clr-namespace:AppTesting.Views">
   <UserControl.Styles>
     <Style Selector="Button.wrapInPanel">
       <Setter Property="Width" Value="400"/>
@@ -53,15 +54,12 @@
        
         <Grid ColumnDefinitions="*" RowDefinitions="Auto, *, Auto">
           <TextBlock Text="{Binding $parent[UserControl].DataContext.CurrentItemTest.Name, Mode=OneWay}" HorizontalAlignment="Center"/>
-
-          <Grid Grid.Row="1" RowDefinitions="Auto, Auto, Auto, *">
-            <!--<TextBlock Text="{Binding CurrentQuestion.Name}" HorizontalAlignment="Center"/>
-            <TextBlock Text="{Binding CurrentQuestion.Name}" HorizontalAlignment="Center"/>-->
-          </Grid>
+          
+          <localControls:TestItemControl Grid.Row="1" DataContext="{Binding $parent[UserControl].DataContext.CurrentItemTest, Mode=OneWay}"/>
           
           <Grid Grid.Row="2" ColumnDefinitions="Auto, *, Auto">
             <Button Classes="wrapInTest"  Command="{Binding $parent[UserControl].DataContext.OnClickEndTestCommand}">Завершить</Button>
-            <Button Classes="wrapInTest" Grid.Column="2">Далее</Button>
+            <Button Classes="wrapInTest" Grid.Column="2"  Command="{Binding $parent[UserControl].DataContext.OnClickNextTestCommand}">Далее</Button>
           </Grid>
         </Grid>
       </DataTemplate>

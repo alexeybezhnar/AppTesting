@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Xml;
+﻿using System.Xml;
+using ReactiveUI;
 
 namespace AppTesting.Models
 {
@@ -36,4 +34,6 @@ namespace AppTesting.Models
             }
         }
     }
+
+   
 }

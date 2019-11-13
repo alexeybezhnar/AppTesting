@@ -13,6 +13,7 @@ namespace AppTesting.ViewModels
             CurrentTest = ListTests[0];
             OnClickSelectCommand = ReactiveCommand.Create<BaseNode>(ClickSelect);
             OnClickEndTestCommand = ReactiveCommand.Create(ClickEndTest);
+            OnClickNextTestCommand = ReactiveCommand.Create(ClickNextTest);
 
         }
 
@@ -24,7 +25,13 @@ namespace AppTesting.ViewModels
             if(CurrentTest is TestModel)
             {
                 CurrentItemTest = new TestItemViewModel((TestModel)CurrentTest);
+                CurrentItemTest.Next();
             }
+        }
+        public ReactiveCommand OnClickNextTestCommand { get; }
+        private void ClickNextTest()
+        {
+            CurrentItemTest?.Next();
         }
 
         public ReactiveCommand OnClickEndTestCommand { get; }
