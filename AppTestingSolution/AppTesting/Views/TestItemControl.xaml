@@ -3,20 +3,32 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="AppTesting.Views.TestItemControl" >
-  <Grid ColumnDefinitions="*" RowDefinitions="Auto, Auto, *" Margin="15">
-    <TextBlock Text="{Binding Header, Mode=OneWay}" HorizontalAlignment="Center" FontWeight="Bold" FontSize="20" Margin="5"/>
+             x:Class="AppTesting.Views.TestItemControl"
+             xmlns:local="clr-namespace:AppTesting.ViewModels"
+             xmlns:local1="clr-namespace:AppTesting.Models">
+  <ContentControl Margin="1" Content="{Binding $parent[UserControl].DataContext}" Padding="10">
+    <ContentControl.DataTemplates>
+      <DataTemplate DataType="{x:Type local:TestItemEndViewModel}">
+        <TextBlock Text="Тест завершен!" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontSize="24" Margin="5" TextWrapping="Wrap"/>
+      </DataTemplate>
+      
+      <DataTemplate DataType="{x:Type local:TestItemViewModel}">
+        <Grid ColumnDefinitions="*" RowDefinitions="Auto, Auto, *" Margin="15">
+          <TextBlock Text="{Binding Header, Mode=OneWay}" HorizontalAlignment="Center" FontWeight="Bold" FontSize="20" Margin="5" TextWrapping="Wrap"/>
 
-    <TextBlock Grid.Row="1" Text="{Binding CurrentQuestion.Question.Name, Mode=OneWay}" HorizontalAlignment="Center" FontSize="18" Margin="5"/>
+          <TextBlock Grid.Row="1" Text="{Binding CurrentQuestion.Question.Name, Mode=OneWay}" HorizontalAlignment="Center" FontSize="18" Margin="5"/>
 
-    <ListBox x:Name="lbTests" Grid.Row="2" Items="{Binding CurrentQuestion.Answers, Mode=OneWay}">
-      <ListBox.ItemTemplate>
-        <DataTemplate>
-          <Grid ColumnDefinitions="*,Auto,50" Margin="5">
-            <CheckBox Content="{Binding Answer.Name, Mode=OneWay}" IsChecked="{Binding Selected, Mode=TwoWay}" FontSize="18" />
-          </Grid>
-        </DataTemplate>
-      </ListBox.ItemTemplate>
-    </ListBox>
-  </Grid>
+          <ListBox x:Name="lbTests" Grid.Row="2" Items="{Binding CurrentQuestion.Answers, Mode=OneWay}" BorderThickness="0">
+            <ListBox.ItemTemplate>
+              <DataTemplate>
+                <Grid ColumnDefinitions="*,Auto,50" Margin="5">
+                  <CheckBox Content="{Binding Answer.Name, Mode=OneWay}" IsChecked="{Binding Selected, Mode=TwoWay}" FontSize="18" />
+                </Grid>
+              </DataTemplate>
+            </ListBox.ItemTemplate>
+          </ListBox>
+        </Grid>
+      </DataTemplate>
+    </ContentControl.DataTemplates>
+  </ContentControl>
 </UserControl>

@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 using ReactiveUI;
 using AppTesting.Models;
 
 namespace AppTesting.ViewModels
 {
+
     public class TestItemViewModel : ViewModelBase
     {
         public TestItemViewModel()
@@ -31,8 +33,8 @@ namespace AppTesting.ViewModels
 
         public string Name { get => test?.Name; }
 
-        private QuestionTestModel _currentQuestion = null;
-        public QuestionTestModel CurrentQuestion
+        private QuestionTestBaseModel _currentQuestion = null;
+        public QuestionTestBaseModel CurrentQuestion
         {
             get => _currentQuestion;
             set => this.RaiseAndSetIfChanged(ref _currentQuestion, value);
@@ -45,11 +47,31 @@ namespace AppTesting.ViewModels
             get => string.Concat("Вопрос №", currentIndex);
         }
 
-        public void Next()
+        public bool IsSelectAnswer()
         {
-            CurrentQuestion = questions[currentIndex];
-            currentIndex++;
-            this.RaisePropertyChanging(nameof(Header));
+            if (CurrentQuestion is QuestionTestModel)
+                return ((QuestionTestModel)CurrentQuestion).Answers.Where(f => f.Selected).Count() > 0;
+            else
+                return true;
         }
+        public bool Next()
+        {
+            bool result = currentIndex < questions.Count;
+            if (result)
+            {
+                CurrentQuestion = questions[currentIndex];
+                currentIndex++;
+                this.RaisePropertyChanged(nameof(Header));
+            }
+            else
+            {
+                CurrentQuestion = new QuestionEndTestModel();
+            }
+            return result;
+        }
+    }
+
+    public class TestItemEndViewModel : ViewModelBase
+    {
     }
 }

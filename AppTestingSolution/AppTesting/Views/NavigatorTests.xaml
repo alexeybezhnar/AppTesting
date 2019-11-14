@@ -53,13 +53,13 @@
       <DataTemplate DataType="{x:Type local:TestModel}">
        
         <Grid ColumnDefinitions="*" RowDefinitions="Auto, *, Auto">
-          <TextBlock Text="{Binding $parent[UserControl].DataContext.CurrentItemTest.Name, Mode=OneWay}" HorizontalAlignment="Center"/>
+          <TextBlock Text="{Binding $parent[UserControl].DataContext.CurrentItemTest.Name, Mode=OneWay}" HorizontalAlignment="Center" FontSize="14"/>
           
           <localControls:TestItemControl Grid.Row="1" DataContext="{Binding $parent[UserControl].DataContext.CurrentItemTest, Mode=OneWay}"/>
           
           <Grid Grid.Row="2" ColumnDefinitions="Auto, *, Auto">
             <Button Classes="wrapInTest"  Command="{Binding $parent[UserControl].DataContext.OnClickEndTestCommand}">Завершить</Button>
-            <Button Classes="wrapInTest" Grid.Column="2"  Command="{Binding $parent[UserControl].DataContext.OnClickNextTestCommand}">Далее</Button>
+            <Button Classes="wrapInTest" Grid.Column="2" IsVisible="{Binding $parent[UserControl].DataContext.IsNext, Mode=OneWay}" Command="{Binding $parent[UserControl].DataContext.OnClickNextTestCommand}">Далее</Button>
           </Grid>
         </Grid>
       </DataTemplate>
