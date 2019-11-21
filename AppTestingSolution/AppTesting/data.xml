@@ -1,0 +1,299 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Node Class="AppTesting.Models.TestRootModel" Name="Список тестов">
+  <Children>
+    <Node Class="AppTesting.Models.TestModel" Name="Простой тест по математике">
+      <Children>
+        <Node Class="AppTesting.Models.QuestionModel" Name="25*40=?">
+          <Children />
+          <Answers>
+            <Node Class="AppTesting.Models.AnswerModel" Name="1000" Right="True">
+              <Children />
+            </Node>
+            <Node Class="AppTesting.Models.AnswerModel" Name="1100" Right="False">
+              <Children />
+            </Node>
+            <Node Class="AppTesting.Models.AnswerModel" Name="800" Right="False">
+              <Children />
+            </Node>
+            <Node Class="AppTesting.Models.AnswerModel" Name="900" Right="False">
+              <Children />
+            </Node>
+          </Answers>
+        </Node>
+        <Node Class="AppTesting.Models.QuestionModel" Name="1000*1000-1000-999*1000=?">
+          <Children />
+          <Answers>
+            <Node Class="AppTesting.Models.AnswerModel" Name="0" Right="True">
+              <Children />
+            </Node>
+            <Node Class="AppTesting.Models.AnswerModel" Name="1" Right="False">
+              <Children />
+            </Node>
+            <Node Class="AppTesting.Models.AnswerModel" Name="2" Right="False">
+              <Children />
+            </Node>
+            <Node Class="AppTesting.Models.AnswerModel" Name="9" Right="False">
+              <Children />
+            </Node>
+          </Answers>
+        </Node>
+        <Node Class="AppTesting.Models.QuestionModel" Name="41.1-40.3=?">
+          <Children />
+          <Answers>
+            <Node Class="AppTesting.Models.AnswerModel" Name="0.2" Right="False">
+              <Children />
+            </Node>
+            <Node Class="AppTesting.Models.AnswerModel" Name="0.8" Right="True">
+              <Children />
+            </Node>
+            <Node Class="AppTesting.Models.AnswerModel" Name="1.2" Right="False">
+              <Children />
+            </Node>
+            <Node Class="AppTesting.Models.AnswerModel" Name="1.8" Right="False">
+              <Children />
+            </Node>
+          </Answers>
+        </Node>
+        <Node Class="AppTesting.Models.QuestionModel" Name="800/0.25=?">
+          <Children />
+          <Answers>
+            <Node Class="AppTesting.Models.AnswerModel" Name="200" Right="False">
+              <Children />
+            </Node>
+            <Node Class="AppTesting.Models.AnswerModel" Name="40" Right="False">
+              <Children />
+            </Node>
+            <Node Class="AppTesting.Models.AnswerModel" Name="3200" Right="True">
+              <Children />
+            </Node>
+            <Node Class="AppTesting.Models.AnswerModel" Name="20" Right="False">
+              <Children />
+            </Node>
+          </Answers>
+        </Node>
+        <Node Class="AppTesting.Models.QuestionModel" Name="707+1818=?">
+          <Children />
+          <Answers>
+            <Node Class="AppTesting.Models.AnswerModel" Name="2255" Right="False">
+              <Children />
+            </Node>
+            <Node Class="AppTesting.Models.AnswerModel" Name="2552" Right="False">
+              <Children />
+            </Node>
+            <Node Class="AppTesting.Models.AnswerModel" Name="2525" Right="True">
+              <Children />
+            </Node>
+            <Node Class="AppTesting.Models.AnswerModel" Name="2616" Right="False">
+              <Children />
+            </Node>
+          </Answers>
+        </Node>
+        <Node Class="AppTesting.Models.QuestionModel" Name="4/6x3/5=?">
+          <Children />
+          <Answers>
+            <Node Class="AppTesting.Models.AnswerModel" Name="2/5" Right="True">
+              <Children />
+            </Node>
+            <Node Class="AppTesting.Models.AnswerModel" Name="10/9" Right="False">
+              <Children />
+            </Node>
+            <Node Class="AppTesting.Models.AnswerModel" Name="1/6" Right="False">
+              <Children />
+            </Node>
+            <Node Class="AppTesting.Models.AnswerModel" Name="14/30" Right="False">
+              <Children />
+            </Node>
+          </Answers>
+        </Node>
+        <Node Class="AppTesting.Models.QuestionModel" Name="1/4+1/5+1/10=?">
+          <Children />
+          <Answers>
+            <Node Class="AppTesting.Models.AnswerModel" Name="9/20" Right="False">
+              <Children />
+            </Node>
+            <Node Class="AppTesting.Models.AnswerModel" Name="11/20" Right="True">
+              <Children />
+            </Node>
+            <Node Class="AppTesting.Models.AnswerModel" Name="3/10" Right="False">
+              <Children />
+            </Node>
+            <Node Class="AppTesting.Models.AnswerModel" Name="4/10" Right="False">
+              <Children />
+            </Node>
+          </Answers>
+        </Node>
+        <Node Class="AppTesting.Models.QuestionModel" Name="123+456+789=?">
+          <Children />
+          <Answers>
+            <Node Class="AppTesting.Models.AnswerModel" Name="1366" Right="False">
+              <Children />
+            </Node>
+            <Node Class="AppTesting.Models.AnswerModel" Name="1256" Right="False">
+              <Children />
+            </Node>
+            <Node Class="AppTesting.Models.AnswerModel" Name="1000" Right="False">
+              <Children />
+            </Node>
+            <Node Class="AppTesting.Models.AnswerModel" Name="1368" Right="True">
+              <Children />
+            </Node>
+          </Answers>
+        </Node>
+        <Node Class="AppTesting.Models.QuestionModel" Name="36/3x2/6">
+          <Children />
+          <Answers>
+            <Node Class="AppTesting.Models.AnswerModel" Name="4" Right="True">
+              <Children />
+            </Node>
+            <Node Class="AppTesting.Models.AnswerModel" Name="12" Right="False">
+              <Children />
+            </Node>
+            <Node Class="AppTesting.Models.AnswerModel" Name="6" Right="False">
+              <Children />
+            </Node>
+            <Node Class="AppTesting.Models.AnswerModel" Name="1" Right="False">
+              <Children />
+            </Node>
+          </Answers>
+        </Node>
+      </Children>
+    </Node>
+    <Node Class="AppTesting.Models.TestModel" Name="Логический тест на внимательность">
+      <Children>
+        <Node Class="AppTesting.Models.QuestionModel" Name="В пиццерии подают две круглых пиццы одной и той же толщины, но разных размеров. Меньшая имеет диаметр 30 см и стоит 30 зедов. Большая имеет диаметр 40 см и стоит 40 зедов. Какую из двух пицц выгоднее покупать?">
+          <Children />
+          <Answers>
+            <Node Class="AppTesting.Models.AnswerModel" Name="Маленькую" Right="False">
+              <Children />
+            </Node>
+            <Node Class="AppTesting.Models.AnswerModel" Name="Большую" Right="True">
+              <Children />
+            </Node>
+            <Node Class="AppTesting.Models.AnswerModel" Name="Обе пиццы одинаково выгодно покупать" Right="False">
+              <Children />
+            </Node>
+          </Answers>
+        </Node>
+        <Node Class="AppTesting.Models.QuestionModel" Name="Космическая станция «Мир» находилась на орбите 15 лет и за это время совершила около 86 500 витков вокруг Земли. Самый длинный период пребывания космонавта на станции «Мир» длился приблизительно 680 дней. Сколько раз этот космонавт облетел">
+          <Children />
+          <Answers>
+            <Node Class="AppTesting.Models.AnswerModel" Name="110 000" Right="False">
+              <Children />
+            </Node>
+            <Node Class="AppTesting.Models.AnswerModel" Name="1 100" Right="False">
+              <Children />
+            </Node>
+            <Node Class="AppTesting.Models.AnswerModel" Name="11 000" Right="True">
+              <Children />
+            </Node>
+            <Node Class="AppTesting.Models.AnswerModel" Name="110" Right="False">
+              <Children />
+            </Node>
+          </Answers>
+        </Node>
+        <Node Class="AppTesting.Models.QuestionModel" Name="Вы готовите заправку для салата по своему рецепту. Для 100 мл заправки нужно 60 мл растительного масла, 30 мл уксуса и 10 мл соевого соуса. Сколько растительного масла вам понадобится, чтобы приготовить 150 мл такой заправки?">
+          <Children />
+          <Answers>
+            <Node Class="AppTesting.Models.AnswerModel" Name="100" Right="False">
+              <Children />
+            </Node>
+            <Node Class="AppTesting.Models.AnswerModel" Name="90" Right="True">
+              <Children />
+            </Node>
+            <Node Class="AppTesting.Models.AnswerModel" Name="120" Right="False">
+              <Children />
+            </Node>
+            <Node Class="AppTesting.Models.AnswerModel" Name="80" Right="False">
+              <Children />
+            </Node>
+          </Answers>
+        </Node>
+        <Node Class="AppTesting.Models.QuestionModel" Name="Пара пингвинов произвела на свет два яйца. Одно весит около 78 г, а второе — примерно 110 г. На сколько процентов второе яйцо тяжелее, чем первое?">
+          <Children />
+          <Answers>
+            <Node Class="AppTesting.Models.AnswerModel" Name="32 %" Right="False">
+              <Children />
+            </Node>
+            <Node Class="AppTesting.Models.AnswerModel" Name="41 %" Right="True">
+              <Children />
+            </Node>
+            <Node Class="AppTesting.Models.AnswerModel" Name="71 %" Right="False">
+              <Children />
+            </Node>
+            <Node Class="AppTesting.Models.AnswerModel" Name="29 %" Right="False">
+              <Children />
+            </Node>
+          </Answers>
+        </Node>
+        <Node Class="AppTesting.Models.QuestionModel" Name="В начале года в колонии 10 000 пингвинов (5 000 пар). Каждая пара пингвинов производит на свет одного птенца весной каждого года. К концу года 20% всех пингвинов (взрослых и птенцов) погибают. Сколько пингвинов (взрослых и птенцов) будет в конце года?">
+          <Children />
+          <Answers>
+            <Node Class="AppTesting.Models.AnswerModel" Name="15 000" Right="False">
+              <Children />
+            </Node>
+            <Node Class="AppTesting.Models.AnswerModel" Name="9 000" Right="False">
+              <Children />
+            </Node>
+            <Node Class="AppTesting.Models.AnswerModel" Name="10 000" Right="False">
+              <Children />
+            </Node>
+            <Node Class="AppTesting.Models.AnswerModel" Name="12 000" Right="True">
+              <Children />
+            </Node>
+          </Answers>
+        </Node>
+        <Node Class="AppTesting.Models.QuestionModel" Name="Гора Фудзияма открыта для посещения с 1 июля по 27 августа каждый год. За это время на Фудзияму поднимается около 200 000 человек. Сколько человек в среднем поднимается на гору за день?">
+          <Children />
+          <Answers>
+            <Node Class="AppTesting.Models.AnswerModel" Name="3 400" Right="True">
+              <Children />
+            </Node>
+            <Node Class="AppTesting.Models.AnswerModel" Name="340" Right="False">
+              <Children />
+            </Node>
+            <Node Class="AppTesting.Models.AnswerModel" Name="7 100" Right="False">
+              <Children />
+            </Node>
+            <Node Class="AppTesting.Models.AnswerModel" Name="710" Right="False">
+              <Children />
+            </Node>
+          </Answers>
+        </Node>
+        <Node Class="AppTesting.Models.QuestionModel" Name="Длина пешеходной тропы Готемба на гору Фудзияма составляет около 9 километров в одну сторону. Она открыта до 8 вечера. Тоши может подняться на гору со средней скоростью 1,5 км/ч, а спуститься — в два раза быстрее. Эти скорости учитывают перерывы на перекусы и отдых. Назовите самое позднее время, когда он может начать свою прогулку, чтобы вернуться к 8 вечера?">
+          <Children />
+          <Answers>
+            <Node Class="AppTesting.Models.AnswerModel" Name="9 часов" Right="False">
+              <Children />
+            </Node>
+            <Node Class="AppTesting.Models.AnswerModel" Name="12 часов" Right="False">
+              <Children />
+            </Node>
+            <Node Class="AppTesting.Models.AnswerModel" Name="11 часов" Right="True">
+              <Children />
+            </Node>
+            <Node Class="AppTesting.Models.AnswerModel" Name="10 часов" Right="False">
+              <Children />
+            </Node>
+          </Answers>
+        </Node>
+        <Node Class="AppTesting.Models.QuestionModel" Name="Во время подъема по тропе Готемба у Тоши был с собой шагомер. Он показал, что тот прошел 22 500 шагов по дороге вверх. Оцените среднюю длину шага Тоши в сантиметрах, если длина тропы Готемба — 9 километров.">
+          <Children />
+          <Answers>
+            <Node Class="AppTesting.Models.AnswerModel" Name="50" Right="False">
+              <Children />
+            </Node>
+            <Node Class="AppTesting.Models.AnswerModel" Name="30" Right="False">
+              <Children />
+            </Node>
+            <Node Class="AppTesting.Models.AnswerModel" Name="45" Right="False">
+              <Children />
+            </Node>
+            <Node Class="AppTesting.Models.AnswerModel" Name="40" Right="True">
+              <Children />
+            </Node>
+          </Answers>
+        </Node>
+      </Children>
+    </Node>
+  </Children>
+</Node>
