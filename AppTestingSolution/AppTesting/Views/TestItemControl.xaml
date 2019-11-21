@@ -9,7 +9,20 @@
   <ContentControl Margin="1" Content="{Binding $parent[UserControl].DataContext}" Padding="10">
     <ContentControl.DataTemplates>
       <DataTemplate DataType="{x:Type local:TestItemEndViewModel}">
-        <TextBlock Text="Тест завершен!" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontSize="24" Margin="5" TextWrapping="Wrap"/>
+        <Grid RowDefinitions="Auto,Auto,*">
+          <TextBlock Text="Тест завершен!" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontSize="24" Margin="5" TextWrapping="Wrap"/>
+          <TextBlock Grid.Row="1" Text="{Binding Question.Name, Mode=OneWay}" HorizontalAlignment="Center" FontSize="18" Margin="5"/>
+
+          <ListBox Grid.Row="2" x:Name="lbTests" Items="{Binding Questions, Mode=OneWay}" BorderThickness="0">
+            <ListBox.ItemTemplate>
+              <DataTemplate>
+                <Border Margin="1" Padding="5" Background="{Binding BackgroundBrush, Mode=OneWay}">
+                  <CheckBox Content="{Binding Question.Name, Mode=OneWay}" IsChecked="{Binding IsRigth, Mode=TwoWay}" FontSize="18" IsEnabled="False" />
+                </Border>
+              </DataTemplate>
+            </ListBox.ItemTemplate>
+          </ListBox>
+        </Grid>
       </DataTemplate>
       
       <DataTemplate DataType="{x:Type local:TestItemViewModel}">

@@ -40,7 +40,7 @@ namespace AppTesting.ViewModels
 
             IsNext = (bool)((TestItemViewModel)CurrentItemTest)?.Next();
             if (IsNext == false)
-                CurrentItemTest = new TestItemEndViewModel();
+                CurrentItemTest = new TestItemEndViewModel(((TestItemViewModel)CurrentItemTest)?.Questions);
         }
 
         bool isNext = true;
